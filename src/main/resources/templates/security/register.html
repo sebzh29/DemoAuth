@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http:///www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Inscription</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <main>
+            <div class="row text-center mt-4">
+                <h1>Inscription</h1>
+            </div>
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <form method="post" th:action="@{/inscription}" th:object="${utilisateur}">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" th:field="*{username}" id="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">password</label>
+                            <input type="password" class="form-control" th:field="*{password}" id="password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" th:field="*{email}" id="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="roles" class="form-label">Roles</label>
+                            <select class="form-select" id="roles" th:field="*{roles}" multiple>
+                                <option
+                                        th:each="role: ${roles}"
+                                        th:value="${role.id}"
+                                        th:text="${role.code}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">S'inscrire</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"</script>
+</body>
+</html>
